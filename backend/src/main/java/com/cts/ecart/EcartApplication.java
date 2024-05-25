@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EcartApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(EcartApplication.class, args);
 		log.info("-------------Application started successfully------------");
 	}
