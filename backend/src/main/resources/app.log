@@ -105,3 +105,33 @@ Caused by: org.hibernate.AnnotationException: Property 'com.cts.ecart.entity.Adm
 2024-05-25T18:36:30.176+05:30  INFO 6264 --- [ecart] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-25T18:36:30.181+05:30  INFO 6264 --- [ecart] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-25T18:36:30.194+05:30  INFO 6264 --- [ecart] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-25T18:39:09.973+05:30  INFO 2392 --- [ecart] [restartedMain] com.cts.ecart.EcartApplication           : Starting EcartApplication using Java 21.0.1 with PID 2392 (C:\Users\HP\Desktop\ecart-spring-react\backend\target\classes started by HP in C:\Users\HP\Desktop\ecart-spring-react\backend)
+2024-05-25T18:39:09.976+05:30  INFO 2392 --- [ecart] [restartedMain] com.cts.ecart.EcartApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-05-25T18:39:10.065+05:30  INFO 2392 --- [ecart] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-25T18:39:10.065+05:30  INFO 2392 --- [ecart] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-25T18:39:11.228+05:30  INFO 2392 --- [ecart] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-25T18:39:11.343+05:30  INFO 2392 --- [ecart] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 5 JPA repository interfaces.
+2024-05-25T18:39:12.312+05:30  INFO 2392 --- [ecart] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-25T18:39:12.341+05:30  INFO 2392 --- [ecart] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-25T18:39:12.341+05:30  INFO 2392 --- [ecart] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-05-25T18:39:12.413+05:30  INFO 2392 --- [ecart] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-25T18:39:12.413+05:30  INFO 2392 --- [ecart] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2347 ms
+2024-05-25T18:39:12.749+05:30  INFO 2392 --- [ecart] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-25T18:39:12.911+05:30  INFO 2392 --- [ecart] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-05-25T18:39:12.979+05:30  INFO 2392 --- [ecart] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-25T18:39:13.509+05:30  INFO 2392 --- [ecart] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-25T18:39:13.581+05:30  INFO 2392 --- [ecart] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-25T18:39:14.085+05:30  INFO 2392 --- [ecart] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ec0a0ca
+2024-05-25T18:39:14.088+05:30  INFO 2392 --- [ecart] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-25T18:39:14.175+05:30  WARN 2392 --- [ecart] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-05-25T18:39:14.176+05:30  WARN 2392 --- [ecart] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-05-25T18:39:15.619+05:30  INFO 2392 --- [ecart] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-25T18:39:15.891+05:30  INFO 2392 --- [ecart] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-25T18:39:16.005+05:30  WARN 2392 --- [ecart] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-25T18:39:17.441+05:30  INFO 2392 --- [ecart] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2024-05-25T18:39:17.493+05:30  INFO 2392 --- [ecart] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-05-25T18:39:17.509+05:30  INFO 2392 --- [ecart] [restartedMain] com.cts.ecart.EcartApplication           : Started EcartApplication in 8.245 seconds (process running for 9.065)
+2024-05-25T18:39:17.518+05:30  INFO 2392 --- [ecart] [restartedMain] com.cts.ecart.EcartApplication           : -------------Application started successfully------------
+2024-05-25T18:39:36.794+05:30  INFO 2392 --- [ecart] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-25T18:39:36.796+05:30  INFO 2392 --- [ecart] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-25T18:39:36.808+05:30  INFO 2392 --- [ecart] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
