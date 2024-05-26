@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "cart")
 public class Cart extends BaseEntity{
 
@@ -18,11 +18,11 @@ public class Cart extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    private List<Product> products;
 
-    @OneToMany(mappedBy = "cart")
-    private List<CartItem> cartItems;
+    private int quantity;
+
 
 }

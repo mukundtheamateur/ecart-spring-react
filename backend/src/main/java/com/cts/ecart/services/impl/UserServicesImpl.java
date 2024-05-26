@@ -1,11 +1,11 @@
 package com.cts.ecart.services.impl;
 
 import com.cts.ecart.constant.RoleType;
-import com.cts.ecart.entity.Cart;
+import com.cts.ecart.entity.Booking;
 import com.cts.ecart.entity.User;
 import com.cts.ecart.exceptions.AlreadyExistsException;
 import com.cts.ecart.exceptions.NotFoundException;
-import com.cts.ecart.repository.CartRepository;
+import com.cts.ecart.repository.BookingRepository;
 import com.cts.ecart.repository.UserRepository;
 import com.cts.ecart.services.service.UserServices;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +21,12 @@ import java.util.Optional;
 @Service
 public class UserServicesImpl implements UserServices {
     private final UserRepository userRepository;
-    private final CartRepository cartRepository;
+    private final BookingRepository bookingRepository;
 
     @Autowired
-    public UserServicesImpl(UserRepository userRepository, CartRepository cartRepository) {
+    public UserServicesImpl(UserRepository userRepository, BookingRepository bookingRepository) {
         this.userRepository = userRepository;
-        this.cartRepository = cartRepository;
+        this.bookingRepository = bookingRepository;
     }
 
 
@@ -104,13 +104,13 @@ public class UserServicesImpl implements UserServices {
     }
 
     @Override
-    public List<Cart> getCartsByUserId(Integer id) throws NotFoundException {
+    public List<Booking> getBookingsByUserId(Integer id) throws NotFoundException {
         log.info("fetching carts with user id : {}", id);
-        List<Cart> carts = cartRepository.findByUserId(id);
-        if(carts.isEmpty()) {
+        List<Booking> bookings = bookingRepository.findByUserId(id);
+        if(bookings.isEmpty()) {
             throw new NotFoundException("No cart found for user id: " + id);
         }
         log.info("bookings fetched");
-        return carts;
+        return bookings;
     }
 }

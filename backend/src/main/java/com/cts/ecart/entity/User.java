@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 
 @Data
@@ -22,7 +23,7 @@ import java.sql.Date;
 @Table(name = "user")
 public class User extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true, nullable = false, name = "username")
@@ -48,5 +49,12 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", columnDefinition = "varchar(100) default 'USER'")
     private RoleType role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
+    @OneToOne
+    @JoinColumn(name="cart_id")
+    private Cart cart;
 
 }

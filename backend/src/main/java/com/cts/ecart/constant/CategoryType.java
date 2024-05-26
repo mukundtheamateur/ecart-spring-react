@@ -5,5 +5,6 @@ public enum CategoryType {
     ELECTRONICS,
     CLOTHING,
     FOOD,
-    OTHER
+    OTHER;
+
 }

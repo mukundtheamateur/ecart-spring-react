@@ -19,7 +19,7 @@ import java.util.List;
 public class Admin extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true, nullable = false, name = "username")

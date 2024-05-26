@@ -1,45 +1,64 @@
 package com.cts.ecart.services.impl;
 
 import com.cts.ecart.entity.Cart;
-import com.cts.ecart.exceptions.AlreadyExistsException;
 import com.cts.ecart.exceptions.NotFoundException;
+import com.cts.ecart.repository.CartRepository;
 import com.cts.ecart.services.service.CartServices;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Slf4j
 @Service
 public class CartServicesImpl implements CartServices {
 
-    @Override
-    public List<Cart> getCartsByUserId(Integer id) throws NotFoundException {
-        return List.of();
+    private final CartRepository cartRepository;
+
+    @Autowired
+    public CartServicesImpl(CartRepository cartRepository) {
+        this.cartRepository = cartRepository;
     }
 
     @Override
-    public Cart saveCart(Cart cart) throws NotFoundException, AlreadyExistsException {
-        return null;
+    public Cart getCartByUserId(Integer id) throws NotFoundException {
+        if (id == null) {
+            throw new IllegalArgumentException("User id cannot be null");
+        }
+        Cart cart = cartRepository.findByUserId(id);
+        if (cart == null) {
+            throw new NotFoundException(String.format("Cart not found for user id: %d", id));
+        }
+        return cart;
     }
 
     @Override
-    public Cart getCartById(Integer id) throws NotFoundException {
-        return null;
-    }
+    public Cart saveCart(Cart cart) throws NotFoundException {
+        if (cart == null) {
+            throw new IllegalArgumentException("Cart cannot be null");
+        }
+        if (cartRepository.existsById(cart.getId())) {
+            throw new NotFoundException("Cart already exists with id: " + cart.getId());
+        }
 
-    @Override
-    public Cart updateCart(Cart cart, Integer id) throws NotFoundException {
-        return null;
+        return cartRepository.save(cart);
     }
 
     @Override
     public void deleteCart(Integer id) throws NotFoundException {
-
+        if (cartRepository.existsById(id)) {
+            cartRepository.deleteById(id);
+        } else {
+            throw new NotFoundException("Cart not found with id: " + id);
+        }
     }
 
     @Override
-    public List<Cart> getAllCarts() throws NotFoundException {
-        return List.of();
+    public Cart getCartById(Integer id) throws NotFoundException {
+        return cartRepository.findById(id).orElseThrow(() -> new NotFoundException("Cart not found with id: " + id));
+    }
+
+    @Override
+    public List<Cart> getAllCarts() {
+        return cartRepository.findAll();
     }
 }

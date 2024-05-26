@@ -35,8 +35,8 @@ public class Product extends BaseEntity{
     @Column(name = "category")
     private CategoryType category;
 
-    @OneToMany(mappedBy = "product")
-    private List<CartItem> cartItems;
+    @Column(name = "quantity")
+    private int quantity;
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
