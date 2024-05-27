@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface CartServices {
 
-    Cart getCartByUserId(Integer id) throws NotFoundException;
-
     Cart saveCart(Cart cart) throws NotFoundException;
 
     void deleteCart(Integer id) throws NotFoundException;

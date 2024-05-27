@@ -2,10 +2,12 @@ package com.cts.ecart.services.impl;
 
 import com.cts.ecart.constant.RoleType;
 import com.cts.ecart.entity.Booking;
+import com.cts.ecart.entity.Cart;
 import com.cts.ecart.entity.User;
 import com.cts.ecart.exceptions.AlreadyExistsException;
 import com.cts.ecart.exceptions.NotFoundException;
 import com.cts.ecart.repository.BookingRepository;
+import com.cts.ecart.repository.CartRepository;
 import com.cts.ecart.repository.UserRepository;
 import com.cts.ecart.services.service.UserServices;
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +24,12 @@ import java.util.Optional;
 public class UserServicesImpl implements UserServices {
     private final UserRepository userRepository;
     private final BookingRepository bookingRepository;
-
+    private final CartRepository cartRepository;
     @Autowired
-    public UserServicesImpl(UserRepository userRepository, BookingRepository bookingRepository) {
+    public UserServicesImpl(UserRepository userRepository, BookingRepository bookingRepository, CartRepository cartRepository) {
         this.userRepository = userRepository;
         this.bookingRepository = bookingRepository;
+        this.cartRepository = cartRepository;
     }
 
 
@@ -112,5 +115,15 @@ public class UserServicesImpl implements UserServices {
         }
         log.info("bookings fetched");
         return bookings;
+    }
+    
+    @Override
+    public Cart getCartByUserId(Integer id) throws NotFoundException{
+    	log.info("fetching cart with User id : {id}", id);
+    	Optional<Cart> cart = cartRepository.findCartById(id);
+    	if(!cart.isPresent()) {
+    		throw new NotFoundException("Cart with this user id is not found!!");
+    	}
+    	return cart.get();
     }
 }

@@ -19,17 +19,6 @@ public class CartServicesImpl implements CartServices {
         this.cartRepository = cartRepository;
     }
 
-    @Override
-    public Cart getCartByUserId(Integer id) throws NotFoundException {
-        if (id == null) {
-            throw new IllegalArgumentException("User id cannot be null");
-        }
-        Cart cart = cartRepository.findByUserId(id);
-        if (cart == null) {
-            throw new NotFoundException(String.format("Cart not found for user id: %d", id));
-        }
-        return cart;
-    }
 
     @Override
     public Cart saveCart(Cart cart) throws NotFoundException {

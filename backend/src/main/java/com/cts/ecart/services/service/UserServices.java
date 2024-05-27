@@ -1,6 +1,7 @@
 package com.cts.ecart.services.service;
 
 import com.cts.ecart.entity.Booking;
+import com.cts.ecart.entity.Cart;
 import com.cts.ecart.entity.User;
 import com.cts.ecart.exceptions.AlreadyExistsException;
 import com.cts.ecart.exceptions.NotFoundException;
@@ -16,5 +17,6 @@ public interface UserServices {
     User getUserByEmail(String email) throws NotFoundException;
     User updateUser(User user, Integer id) throws NotFoundException;
     List<Booking> getBookingsByUserId(Integer id) throws NotFoundException;
+    Cart getCartByUserId(Integer id) throws NotFoundException;
 
 }
