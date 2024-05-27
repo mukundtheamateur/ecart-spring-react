@@ -2,6 +2,10 @@ package com.cts.ecart.entity;
 
 import com.cts.ecart.constant.ProfessionType;
 import com.cts.ecart.constant.RoleType;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,7 +46,6 @@ public class User extends BaseEntity {
     private Date birthday;
 
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Profession can not be empty")
     @Column(name = "profession", nullable = false)
     private ProfessionType profession;
 
@@ -53,8 +56,8 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    @OneToOne
-    @JoinColumn(name="cart_id")
+    @OneToOne(mappedBy = "user")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private Cart cart;
 
 }

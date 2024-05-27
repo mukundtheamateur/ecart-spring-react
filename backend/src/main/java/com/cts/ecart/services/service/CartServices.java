@@ -14,4 +14,6 @@ public interface CartServices {
     Cart getCartById(Integer id) throws NotFoundException;
 
     List<Cart> getAllCarts();
+    
+    Cart getCartByUserId(Integer userId) throws NotFoundException;
 }

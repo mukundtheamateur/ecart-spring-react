@@ -1,10 +1,10 @@
 package com.cts.ecart.services.service;
 
+import java.util.List;
+
 import com.cts.ecart.entity.Product;
 import com.cts.ecart.exceptions.AlreadyExistsException;
 import com.cts.ecart.exceptions.NotFoundException;
-
-import java.util.List;
 
 public interface ProductServices {
 
@@ -14,10 +14,11 @@ public interface ProductServices {
 
     Product saveProduct(Product product) throws NotFoundException, AlreadyExistsException;
 
-    void deleteProduct(Integer id) throws NotFoundException;
+    String deleteProduct(Integer id) throws NotFoundException;
 
     Product getProductByName(String name) throws NotFoundException;
 
-    Product updateProduct(Product product, Integer id) throws NotFoundException;
+    Product updateProduct(Product product) throws NotFoundException;
 
+    List<Product> getProductsByAdminId(Integer adminId) throws NotFoundException;
 }

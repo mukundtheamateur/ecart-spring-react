@@ -84,7 +84,13 @@ public class UserController {
 
 
     @GetMapping("/id/{id}/bookings")
-    public List<Booking> getUserBookings(@PathVariable Integer id) throws NotFoundException{
-        return userServices.getBookingsByUserId(id);
+    public ResponseEntity<List<Booking>> getUserBookings(@PathVariable Integer id) throws NotFoundException{
+        
+    	List<Booking> bookings = userServices.getBookingsByUserId(id);
+    	if(bookings.isEmpty()) {
+    		throw new NotFoundException("No bookings found for this user!!");
+    	}
+    	return new ResponseEntity<>(bookings, HttpStatus.OK);
+        
     }
 }

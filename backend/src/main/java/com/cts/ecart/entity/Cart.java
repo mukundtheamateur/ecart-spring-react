@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -21,6 +25,12 @@ public class Cart extends BaseEntity{
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<Product> products;
+    
+ // Cart entity
+    @OneToOne
+    @JoinColumn(name="user_id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    private User user;
 
     private int quantity;
 

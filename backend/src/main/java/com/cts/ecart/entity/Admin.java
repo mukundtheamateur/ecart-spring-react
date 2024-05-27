@@ -1,6 +1,11 @@
 package com.cts.ecart.entity;
 
 import com.cts.ecart.constant.RoleType;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Past;
@@ -40,8 +45,12 @@ public class Admin extends BaseEntity {
     @Column(name = "role", columnDefinition = "varchar(100) default 'ADMIN'")
     private RoleType role;
 
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Product> products;
+
+
 
 
 }

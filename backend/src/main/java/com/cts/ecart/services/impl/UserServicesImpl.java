@@ -61,6 +61,7 @@ public class UserServicesImpl implements UserServices {
         if (savedUser == null) {
             throw new NotFoundException("The user could not be saved.");
         }
+        savedUser.setRole(RoleType.USER);
 
         return savedUser;
     }
@@ -97,7 +98,7 @@ public class UserServicesImpl implements UserServices {
             user.setUsername(userUpdates.getUsername() != null ? userUpdates.getUsername() : user.getUsername());
             user.setPassword(userUpdates.getPassword() != null ? userUpdates.getPassword() : user.getPassword());
             user.setProfession(userUpdates.getProfession() != null ? userUpdates.getProfession() : user.getProfession());
-            user.setRole(userUpdates.getRole() != null ? RoleType.valueOf("USER") : user.getRole());
+            user.setRole(userUpdates.getRole() == null ? RoleType.valueOf("USER") : user.getRole());
             User updatedUser = userRepository.save(user);
             log.info("User updated successfully: {}", updatedUser);
             return updatedUser;
