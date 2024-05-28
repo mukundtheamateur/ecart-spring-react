@@ -1,5 +1,6 @@
 package com.cts.ecart.services.impl;
 
+import com.cts.ecart.constant.RoleType;
 import com.cts.ecart.entity.Admin;
 import com.cts.ecart.entity.Product;
 import com.cts.ecart.exceptions.AlreadyExistsException;
@@ -51,11 +52,12 @@ public class AdminServicesImpl implements AdminServices {
         }
 
         // Save the user to the database
+        admin.setRole(RoleType.ADMIN);
         Admin savedAdmin = adminRepository.save(admin);
 
         // If the user was not saved correctly, throw an exception
         if (savedAdmin == null) {
-            throw new NotFoundException("The ADmin could not be saved.");
+            throw new NotFoundException("The Admin could not be saved.");
         }
 
         return savedAdmin;

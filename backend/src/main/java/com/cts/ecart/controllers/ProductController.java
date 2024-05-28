@@ -45,7 +45,7 @@ public class ProductController {
 		return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/{id}")
+	@GetMapping(value="/id/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable("id") Integer id) throws NotFoundException{
 		log.info("controller called for fetch product by product id");
 		Product product = productServices.getProductById(id);

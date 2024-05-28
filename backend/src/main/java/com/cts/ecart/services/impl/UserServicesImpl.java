@@ -54,6 +54,7 @@ public class UserServicesImpl implements UserServices {
             throw new AlreadyExistsException("User already exists with email: " + user.getEmail());
         }
 
+        user.setRole(RoleType.USER);
         // Save the user to the database
         User savedUser = userRepository.save(user);
 
@@ -61,8 +62,6 @@ public class UserServicesImpl implements UserServices {
         if (savedUser == null) {
             throw new NotFoundException("The user could not be saved.");
         }
-        savedUser.setRole(RoleType.USER);
-
         return savedUser;
     }
 
